@@ -1,0 +1,322 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Music Library</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            margin: 0;
+            background: #121212;
+            color: white;
+            padding-bottom: 110px; /* Space for the bottom player */
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 25px;
+            font-size: 32px;
+            font-weight: bold;
+            background: #000;
+            border-bottom: 1px solid #282828;
+            letter-spacing: 1px;
+        }
+
+        /* GRID CONTAINER */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+
+        /* SONG CARD */
+        .song {
+            background: #181818;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .song:hover {
+            background: #282828;
+            transform: translateY(-6px);
+        }
+
+        /* IMAGE */
+        .song img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid #333;
+        }
+
+        /* SONG INFO */
+        .song-info {
+            padding: 18px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .song-info h3 {
+            margin: 8px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .song-info p {
+            font-size: 14px;
+            color: #b3b3b3;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .duration {
+            color: #1db954;
+            font-weight: bold;
+            margin-bottom: 10px !important;
+        }
+
+        /* LISTEN BUTTON */
+        .listen-btn {
+            background: #1db954;
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.2s ease;
+            margin-top: auto;
+        }
+
+        .listen-btn:hover {
+            background: #1ed760;
+            transform: scale(1.03);
+        }
+
+        /* FIXED FOOTER PLAYER */
+        .player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #111;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.8);
+            border-top: 1px solid #282828;
+            z-index: 100;
+        }
+
+        .player audio {
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    🎵 Music Library
+</header>
+
+<div class="container">
+
+    <div class="song">
+        <img src="/img/0x1900-000000-80-0-0.jpg">
+        <div class="song-info">
+            <h3>Believer</h3>
+            <p><b>Artist:</b> Imagine Dragons</p>
+            <p class="duration">Duration: 3:24</p>
+            <p>This song is about how pain and hardship can make a person stronger. It has a very energetic rhythm with strong percussion and motivational lyrics.</p>
+            <button class="listen-btn" onclick="playSong('/song 3/WhatsApp-Audio-2026-03-09-at-7.35.48-AM (2).mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/My_Way_-_Frank_Sinatra.jpg">
+        <div class="song-info">
+            <h3>My Way</h3>
+            <p><b>Artist:</b> Frank Sinatra</p>
+            <p class="duration">Duration: 4:35</p>
+            <p>One of Frank Sinatra's most famous songs. The lyrics are about reflecting on life and being proud of having lived according to one's own choices.</p>
+            <button class="listen-btn" onclick="playSong('/song 2/My way.mpeg.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/artworks-000209835502-380mhp-t500x500.jpg">
+        <div class="song-info">
+            <h3>New Person</h3>
+            <p><b>Artist:</b> Currents</p>
+            <p class="duration">Duration: 6:03</p>
+            <p>The song tells the story of someone trying to become a new person, to mature and improve their life. It acknowledges that mistakes can still happen.</p>
+            <button class="listen-btn" onclick="playSong('/audio/New-Person.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/images.jpg">
+        <div class="song-info">
+            <h3>Taking What's Not Yours</h3>
+            <p><b>Artist:</b> TV Girl</p>
+            <p class="duration">Duration: 3:25</p>
+            <p>This track is about a person who has a habit of taking things that don't belong to them, exploring themes of selfishness and manipulation.</p>
+            <button class="listen-btn" onclick="playSong('/audio/talking.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/ab67616d00001e022ee817bc9f5e603c57b13926.jpg">
+        <div class="song-info">
+            <h3>Shout To The Lord</h3>
+            <p><b>Artist:</b> Gateway Worship</p>
+            <p class="duration">Duration: 5:40</p>
+            <p>An iconic worship ballad that exalts Jesus Christ as a refuge and tower of strength, known for its global impact on contemporary music.</p>
+            <button class="listen-btn" onclick="playSong('/song 2/lord.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/descarga.jpg">
+        <div class="song-info">
+            <h3>Goodness Of God</h3>
+            <p><b>Artist:</b> Bethel Music & Jenn Johnson</p>
+            <p class="duration">Duration: 5:03</p>
+            <p>A popular contemporary worship song expressing gratitude and acknowledging God's faithfulness and constant love.</p>
+            <button class="listen-btn" onclick="playSong('/song 2/fidelidad.mpeg.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/images (1).jpg">
+        <div class="song-info">
+            <h3>Mystery Girl</h3>
+            <p><b>Artist:</b> HOUSECALL</p>
+            <p class="duration">Duration: 2:48</p>
+            <p>Recorded at Silence Audible, this track features a dreamy lo-fi aesthetic and captures a sense of youthful longing and mystery.</p>
+            <button class="listen-btn" onclick="playSong('/audio/my-sister-girl.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/images (2).jpg">
+        <div class="song-info">
+            <h3>A Love Like Her</h3>
+            <p><b>Artist:</b> BluNites</p>
+            <p class="duration">Duration: 3:26</p>
+            <p>A standout track featuring lead vocals by Luis Leonardo Diaz, exploring themes of deep infatuation and mesmerizing love.</p>
+            <button class="listen-btn" onclick="playSong('/song 2/i-live-her.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/jingle-bells-9781665974837_hr.jpg">
+        <div class="song-info">
+            <h3>Jingle Bells</h3>
+            <p><b>Artist: James Lord Pierpont</b> BluNites</p>
+            <p class="duration">Duration: 2:10</p>
+            <p>Jingle Bells" is one of the most famous Christmas songs in the world. It was written in 1857 by James Lord Pierpont. The song describes a joyful winter sleigh ride with bells ringing and people having fun in the snow. Even though it is strongly associated with Christmas, it was originally written for Thanksgiving celebrations.</p>
+            <button class="listen-btn" onclick="playSong('/song 2/JingleBellRock.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/navidad.jpg">
+        <div class="song-info">
+            <h3>Silent Night</h3>
+            <p><b>Artist: Franz Xaver Gruber and Joseph Mohr</b> BluNites</p>
+            <p class="duration">Duration: 3:00</p>
+            <p>Silent Night" is a traditional Christmas carol first performed in 1818 in Austria. The lyrics were written by Joseph Mohr and the music was composed by Franz Xaver Gruber. The song talks about the peaceful night when Jesus Christ was born. It has a calm and spiritual tone and is sung in many languages around the world.</p>
+            <button class="listen-btn" onclick="playSong('/audio/silent.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/navidad 2.jpg">
+        <div class="song-info">
+            <h3>All I Want For Christmas Is You</h3>
+            <p><b>Artist: Mariah Carey</b> BluNites</p>
+            <p class="duration">Duration: 4:01</p>
+            <p>All I Want for Christmas Is You" is a popular Christmas pop song released in 1994 by Mariah Carey. The song expresses that the singer does not care about gifts or decorations for Christmas—she only wants to be with the person she loves. It has become one of the most famous modern Christmas songs and is played every year during the holiday season.</p>
+            <button class="listen-btn" onclick="playSong('/song 3/all.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/image_thumb-38.png">
+        <div class="song-info">
+            <h3>Eye of the Tiger</h3>
+            <p><b>Artist: Survivor</b> BluNites</p>
+            <p class="duration">Duration: 4:04</p>
+            <p>Eye of the Tiger" is a powerful rock song released in 1982 for the movie Rocky III. The song represents determination, strength, and the fighting spirit of a boxer preparing for a big challenge. Because of its energetic rhythm and motivational lyrics, it became one of the most iconic sports songs in movie history and is closely connected with the Rocky franchise.</p>
+            <button class="listen-btn" onclick="playSong('/audio/Tiger.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/ingles.jpg">
+        <div class="song-info">
+            <h3> Shape of You</h3>
+            <p><b>Artist: Ed Sheeran</b> BluNites</p>
+            <p class="duration">Duration: 3:53</p>
+            <p>Shape of You" is a pop song released in 2017. The song talks about meeting someone in a bar and slowly falling in love. It became one of the most streamed songs in the world because of its catchy rhythm and danceable beat.</p>
+            <button class="listen-btn" onclick="playSong('/song 2/shape.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/artworks-Eke4dWZTIrXCkXPW-hX2ihg-t500x500.jpg">
+        <div class="song-info">
+            <h3> Blinding Lights</h3>
+            <p><b>Artist: The Weeknd</b> BluNites</p>
+            <p class="duration">Duration: 3:20</p>
+            <p>Blinding Lights" is a synth-pop song released in 2019. It has a strong 1980s musical style and talks about wanting to return to someone you love. The song became one of the most popular songs worldwide and stayed on music charts for a long time.</p>
+            <button class="listen-btn" onclick="playSong('/audio/the.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+    <div class="song">
+        <img src="/img/images (78).jpg">
+        <div class="song-info">
+            <h3>Someone Like You</h3>
+            <p><b>Artist: Adele</b> BluNites</p>
+            <p class="duration">Duration: 4:45</p>
+            <p>Someone Like You" is a powerful emotional ballad released in 2011. The song is about heartbreak and accepting that a former partner has moved on. Adele’s strong voice and the simple piano melody made the song very popular around the world.</p>
+            <button class="listen-btn" onclick="playSong ('/song 3/Adele.mp3')">Listen Song</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="player">
+    <audio id="audioPlayer" controls></audio>
+</div>
+
+<script>
+    function playSong(songFile) {
+        let player = document.getElementById("audioPlayer");
+        
+        // Update source
+        player.src = songFile;
+        
+        // Load and play
+        player.load();
+        player.play().catch(function(error) {
+            console.log("Playback error: ", error);
+            alert("Could not play the audio. Please verify that the file exists in the '/Website/' folder.");
+        });
+    }
+</script>
+
+</body>
+</html>
